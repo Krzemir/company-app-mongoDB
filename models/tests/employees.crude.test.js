@@ -22,6 +22,7 @@ describe('Employee', () => {
 
       const employeeTwo = await new Employee({firstName: 'EmployeeTwoFirstName', lastName: 'EmployeeTwoLastName', department: 'departmentTwo'});
       await employeeTwo.save();
+
     })
 
     it('should return all the data with find method', async () => {
@@ -111,7 +112,7 @@ describe('Employee', () => {
 
     it('should properly remove one document with remove method', async () => {
       const employee = await Employee.findOne({ firstName: 'EmployeeOneFirstName' });
-      employee.remove();
+      await employee.remove();
       const removedEmployee = await Employee.findOne({ firstName: 'EmployeeOneFirstName' });
       expect(removedEmployee).to.be.null;
     })
